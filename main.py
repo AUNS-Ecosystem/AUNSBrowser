@@ -4,11 +4,12 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtWebEngineWidgets import *
 
 
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.browser = QWebEngineView()
-        self.browser.setUrl(QUrl('http://google.com'))
+        self.browser.setUrl(QUrl('https://aunseco.com'))
         self.setCentralWidget(self.browser)
         self.showMaximized()
 
@@ -32,6 +33,10 @@ class MainWindow(QMainWindow):
         home_btn.triggered.connect(self.navigate_home)
         navbar.addAction(home_btn)
 
+        home_btn = QAction('Home', self)
+        home_btn.triggered.connect(self.navigate_home)
+        navbar.addAction(home_btn)
+
         self.url_bar = QLineEdit()
         self.url_bar.returnPressed.connect(self.navigate_to_url)
         navbar.addWidget(self.url_bar)
@@ -39,7 +44,7 @@ class MainWindow(QMainWindow):
         self.browser.urlChanged.connect(self.update_url)
 
     def navigate_home(self):
-        self.browser.setUrl(QUrl('http://programming-hero.com'))
+        self.browser.setUrl(QUrl('https://aunseco.com'))
 
     def navigate_to_url(self):
         url = self.url_bar.text()
@@ -50,6 +55,6 @@ class MainWindow(QMainWindow):
 
 
 app = QApplication(sys.argv)
-QApplication.setApplicationName('My Cool Browser')
+QApplication.setApplicationName('AUNS Ecosystem')
 window = MainWindow()
 app.exec_()
